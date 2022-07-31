@@ -13,19 +13,22 @@ const Nav = () => {
             <Link to="/register">註冊</Link>
           </li>
           <li>
-            <Link to="login">登入</Link>
+            <Link to="/login">登入</Link>
           </li>
           <li>
             <Link to="/">登出</Link>
           </li>
           <li>
-            <Link to="profile">個人頁面</Link>
+            <Link to="/profile">個人頁面</Link>
           </li>
           <li>
-            <Link to="postcourses">新增課程</Link>
+            <Link to="/postcourses">新增課程</Link>
           </li>
           <li>
-            <Link to="enroll">註冊課程</Link>
+            <Link to="/enroll">註冊課程</Link>
+          </li>
+          <li>
+            <Link to="/search">搜尋課程</Link>
           </li>
         </ul>
       </nav>
