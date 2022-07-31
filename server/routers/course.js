@@ -17,6 +17,7 @@ router.post("/", async (req, res) => {
     url,
     instructor: req.user._id,
     date: Date.now() + 8 * 60 * 60 * 1000,
+    lastdate: Date.now() + 8 * 60 * 60 * 1000,
   });
   newCourse
     .save()
@@ -38,7 +39,18 @@ router.get("/title/:name", (req, res) => {});
 // get students enrolled courses - student
 router.get("/enroll/:_id", (req, res) => {});
 // get instructor posted courses - instructor
-router.get("/post/:_id", (req, res) => {});
+router.get("/post/:_id", (req, res) => {
+  let { _id } = req.params;
+  Course.find({ instructor: _id })
+    .populate("instructor", ["username", "email"])
+    .then((item) => {
+      res.status(200).json(item);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send("這個講師沒有任何課");
+    });
+});
 
 // update - instructor
 router.patch("/:_id", (req, res) => {});

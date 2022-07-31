@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CourseService from "../services/CourseService";
 
 const Postcourse = ({ currentUser, setCurrentUser }) => {
@@ -6,6 +6,8 @@ const Postcourse = ({ currentUser, setCurrentUser }) => {
   let [description, setDescription] = useState("");
   let [url, setURL] = useState(0);
   let [message, setMessage] = useState("");
+
+  let [courseData, setCourseData] = useState([]);
 
   const handleChangeTitle = (e) => {
     setTitle(e.target.value);
@@ -16,6 +18,25 @@ const Postcourse = ({ currentUser, setCurrentUser }) => {
   const handleChangeURL = (e) => {
     setURL(e.target.value);
   };
+
+  useEffect(() => {
+    let _id;
+    if (currentUser) {
+      _id = currentUser.user._id;
+    } else {
+      _id = "";
+    }
+
+    if (currentUser.user.role === "instructor") {
+      CourseService.getInstructorCourses(_id)
+        .then((item) => {
+          setCourseData(item.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  });
 
   const handlePostCourse = () => {
     CourseService.post(title, description, url)
@@ -45,12 +66,17 @@ const Postcourse = ({ currentUser, setCurrentUser }) => {
       />
       <button onClick={handlePostCourse}>立即新增課程</button>
       <h3>已創建的課程</h3>
-      <h3>課堂標題</h3>
-      <p>上傳時間:</p>
-      <p>註冊人數:</p>
-      <p>讚: 20</p>
-      <p>爛: 15</p>
-      <button>查看課程內容</button>
+      {courseData &&
+        courseData.map((course) => (
+          <div>
+            <h3>課堂標題: {course.title}</h3>
+            <p>上傳時間:{course.date}</p>
+            <p>註冊人數:{course.students.length}</p>
+            <p>讚: {course.good.length}</p>
+            <p>爛: {course.bad.length}</p>
+            <button>查看課程內容</button>
+          </div>
+        ))}
     </div>
   );
 };

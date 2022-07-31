@@ -30,6 +30,10 @@ let CourseSchema = new mongoose.Schema({
     type: Date,
     default: null,
   },
+  lastdate: {
+    type: Date,
+    default: null,
+  },
   good: {
     type: [mongoose.Schema.Types.ObjectId],
     default: [],
