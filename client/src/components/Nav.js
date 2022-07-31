@@ -1,7 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import AuthService from "../services/AuthService";
 
-const Nav = () => {
+const Nav = ({ currentUser, setCurrentUser }) => {
+  const handleLogout = () => {
+    AuthService.logout();
+    window.alert("登出成功，現在幫你導回首頁");
+    setCurrentUser(AuthService.getCurrentUser());
+  };
   return (
     <div>
       <nav>
@@ -16,7 +22,9 @@ const Nav = () => {
             <Link to="/login">登入</Link>
           </li>
           <li>
-            <Link to="/">登出</Link>
+            <Link to="/" onClick={handleLogout}>
+              登出
+            </Link>
           </li>
           <li>
             <Link to="/profile">個人頁面</Link>
