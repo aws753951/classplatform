@@ -68,7 +68,7 @@ const Postcourse = ({ currentUser, setCurrentUser }) => {
       <h3>已創建的課程</h3>
       {courseData &&
         courseData.map((course) => (
-          <div>
+          <div key={course._id}>
             <h3>課堂標題: {course.title}</h3>
             <p>上傳時間:{course.date}</p>
             <p>註冊人數:{course.students.length}</p>

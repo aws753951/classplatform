@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const AuthRoute = require("./routers").AuthRoute;
 const CourseRoute = require("./routers").CourseRoute;
+const SearchRoute = require("./routers").SearchRoute;
 const passport = require("passport");
 require("./config/passport")(passport);
 
@@ -30,6 +31,7 @@ app.use(
   passport.authenticate("jwt", { session: false }),
   CourseRoute
 );
+app.use("/api/search", SearchRoute);
 
 app.listen(8080, () => {
   console.log("Server is running at port 8080.");
