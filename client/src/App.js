@@ -34,8 +34,18 @@ const App = () => {
             />
           }
         />
-        <Route path="/enroll" element={<Enroll />} />
-        <Route path="/search" element={<Search />} />
+        <Route
+          path={`/enroll`}
+          element={
+            <Enroll currentUser={currentUser} setCurrentUser={setCurrentUser} />
+          }
+        />
+        <Route
+          path="/search"
+          element={
+            <Search currentUser={currentUser} setCurrentUser={setCurrentUser} />
+          }
+        />
       </Routes>
     </div>
   );

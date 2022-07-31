@@ -34,7 +34,18 @@ router.post("/enroll/:_id", (req, res) => {});
 // read
 
 // get students enrolled courses - student
-router.get("/enroll/:_id", (req, res) => {});
+router.get("/enroll/:_id", (req, res) => {
+  let { _id } = req.params;
+  Course.findOne({ _id })
+    .populate("instructor", ["username", "email"])
+    .then((item) => {
+      res.status(200).json(item);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send(err);
+    });
+});
 // get instructor posted courses - instructor
 router.get("/post/:_id", (req, res) => {
   let { _id } = req.params;

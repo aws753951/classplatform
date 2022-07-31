@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import CourseService from "../services/CourseService";
 import SearchService from "../services/SearchService";
+import { useNavigate } from "react-router-dom";
 
 const Search = ({ currentUser, setCurrentUser }) => {
+  const navigate = useNavigate();
   let [name, setName] = useState("");
   let [courseData, setCourseData] = useState(null);
 
@@ -37,6 +38,17 @@ const Search = ({ currentUser, setCurrentUser }) => {
       });
   };
 
+  const handleContent = (e) => {
+    if (!currentUser) {
+      window.alert("你還沒登入喔，請登入後再查看課程內容");
+      navigate("/login");
+    } else {
+      currentUser.user["course"] = e.target.id;
+      setCurrentUser(currentUser);
+      navigate("/enroll");
+    }
+  };
+
   useEffect(() => {
     SearchService.getCourses()
       .then((item) => {
@@ -65,7 +77,9 @@ const Search = ({ currentUser, setCurrentUser }) => {
             <p>註冊人數:{course.students.length}</p>
             <p>讚: {course.good.length}</p>
             <p>爛: {course.bad.length}</p>
-            <button>查看課程內容</button>
+            <button id={course._id} onClick={handleContent}>
+              查看課程內容或註冊
+            </button>
           </div>
         ))}
     </div>
