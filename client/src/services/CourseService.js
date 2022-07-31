@@ -20,6 +20,16 @@ class CourseService {
   // enroll a new course - student
   // read----------------
   // get all courses
+  getCourses() {
+    if (localStorage.getItem("user")) {
+      this.token = JSON.parse(localStorage.getItem("user")).token;
+    } else {
+      this.token = "";
+    }
+    return axios.get(API_URL, {
+      headers: { Authorization: this.token },
+    });
+  }
   // get course by name
   // get students enrolled courses - student
   // get instructor posted courses - instructor

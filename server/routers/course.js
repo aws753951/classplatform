@@ -33,7 +33,17 @@ router.post("/enroll/:_id", (req, res) => {});
 
 // read
 // get all courses
-router.get("/", (req, res) => {});
+router.get("/", (req, res) => {
+  Course.find({})
+    .populate("instructor", ["username", "email"])
+    .then((item) => {
+      res.status(200).json(item);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send("No courses.");
+    });
+});
 // get course by title
 router.get("/title/:name", (req, res) => {});
 // get students enrolled courses - student
