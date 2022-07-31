@@ -22,9 +22,13 @@ let CourseSchema = new mongoose.Schema({
     default: [],
     ref: "User",
   },
+  url: {
+    type: String,
+    required: true,
+  },
   date: {
     type: Date,
-    default: Date.now() + 8 * 60 * 60 * 1000,
+    default: null,
   },
   good: {
     type: [mongoose.Schema.Types.ObjectId],

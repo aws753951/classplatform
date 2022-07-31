@@ -4,25 +4,27 @@ const courseValidation = require("../validation").courseValidation;
 
 // create
 // post a new course
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
   const { error } = courseValidation(req.body);
   if (error) return res.status(400).send(error.details[0].message);
-  if (req.user.isStudent())
-    return res.status(400).send("Only instructor can post");
-  // need check course schema
-  let { title, description } = req.body;
+  if (req.user.isStudent()) return res.status(400).send("只有講師才能新增課程");
+  let { title, description, url } = req.body;
+  let foundCourse = await Course.findOne({ title });
+  if (foundCourse) return res.status(400).send("課程已經被註冊");
   let newCourse = new Course({
     title,
     description,
+    url,
     instructor: req.user._id,
+    date: Date.now() + 8 * 60 * 60 * 1000,
   });
   newCourse
     .save()
     .then(() => {
-      res.status(200).send("New course has been saved.");
+      res.status(200).send("新課程已經註冊好了");
     })
-    .catch(() => {
-      res.status(400).send("Cant save course.");
+    .catch((err) => {
+      res.status(400).send(err);
     });
 });
 // enroll a new course - student

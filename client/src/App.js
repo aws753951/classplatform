@@ -25,7 +25,15 @@ const App = () => {
           }
         />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/postcourses" element={<Postcourse />} />
+        <Route
+          path="/postcourses"
+          element={
+            <Postcourse
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+            />
+          }
+        />
         <Route path="/enroll" element={<Enroll />} />
         <Route path="/search" element={<Search />} />
       </Routes>

@@ -25,6 +25,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/user", AuthRoute);
+app.use(
+  "/api/courses",
+  passport.authenticate("jwt", { session: false }),
+  CourseRoute
+);
 
 app.listen(8080, () => {
   console.log("Server is running at port 8080.");
