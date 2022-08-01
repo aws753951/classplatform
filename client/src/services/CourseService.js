@@ -32,6 +32,23 @@ class CourseService {
       }
     );
   }
+
+  // giv course good or bad - student
+  rating(_id, user_id, rating) {
+    if (localStorage.getItem("user")) {
+      this.token = JSON.parse(localStorage.getItem("user")).token;
+    } else {
+      this.token = "";
+    }
+    return axios.post(
+      API_URL + "/rating/" + _id,
+      { user_id, rating },
+      {
+        headers: { Authorization: this.token },
+      }
+    );
+  }
+
   // read----------------
   // get course with id
   getCourseWithID(_id) {

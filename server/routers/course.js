@@ -49,6 +49,39 @@ router.post("/enroll/:_id", (req, res) => {
   });
 });
 
+// giv course good or bad
+router.post("/rating/:_id", (req, res) => {
+  let { _id } = req.params;
+  let { user_id, rating } = req.body;
+  Course.findOne({ _id }).then((item) => {
+    if (rating == 1) {
+      if (item.good.indexOf(user_id) > -1) {
+        item.good.splice(item.good.indexOf(user_id), 1);
+      } else {
+        item.good.push(user_id);
+        if (item.bad.indexOf(user_id) > -1) {
+          item.bad.splice(item.bad.indexOf(user_id), 1);
+        }
+      }
+    } else {
+      if (item.bad.indexOf(user_id) > -1) {
+        item.bad.splice(item.bad.indexOf(user_id), 1);
+      } else {
+        item.bad.push(user_id);
+        if (item.good.indexOf(user_id) > -1) {
+          item.good.splice(item.good.indexOf(user_id), 1);
+        }
+      }
+    }
+    item.save().then((i) => {
+      res.json({
+        good: i.good.length,
+        bad: i.bad.length,
+      });
+    });
+  });
+});
+
 // read
 
 // get student enrolled course

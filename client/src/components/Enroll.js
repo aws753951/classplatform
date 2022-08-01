@@ -6,6 +6,8 @@ const Enroll = ({ currentUser, setCurrentUser }) => {
   const navigate = useNavigate();
   let [courseData, setCourseData] = useState(null);
   let [foundUrl, setFoundUrl] = useState(null);
+  let [good, setGood] = useState(0);
+  let [bad, setBad] = useState(0);
 
   const enrollCourse = (e) => {
     if (currentUser.user.role === "student") {
@@ -46,6 +48,31 @@ const Enroll = ({ currentUser, setCurrentUser }) => {
     });
   };
 
+  const handleGood = (e) => {
+    if (currentUser.user.role !== "student") {
+      window.alert("只有學生才能給讚或給爛");
+    } else {
+      CourseService.rating(e.target.id, currentUser.user._id, 1).then(
+        (item) => {
+          setGood(item.data.good);
+          setBad(item.data.bad);
+        }
+      );
+    }
+  };
+  const handleBad = (e) => {
+    if (currentUser.user.role !== "student") {
+      window.alert("只有學生才能給讚或給爛");
+    } else {
+      CourseService.rating(e.target.id, currentUser.user._id, 0).then(
+        (item) => {
+          setGood(item.data.good);
+          setBad(item.data.bad);
+        }
+      );
+    }
+  };
+
   useEffect(() => {
     CourseService.getCourseWithID(currentUser.user.course).then((item) => {
       if (item.data.url.match(/v=(.*)/)[1]) {
@@ -59,6 +86,10 @@ const Enroll = ({ currentUser, setCurrentUser }) => {
         setFoundUrl(item.data.url.match(/youtu.be\/(.*)/)[1]);
       }
       setCourseData(item.data);
+    });
+    CourseService.getCourseWithID(currentUser.user.course).then((item) => {
+      setGood(item.data.good.length);
+      setBad(item.data.bad.length);
     });
   }, []);
 
@@ -81,6 +112,15 @@ const Enroll = ({ currentUser, setCurrentUser }) => {
           allowfullscreen
         ></iframe>
       )}
+
+      <button id={currentUser.user.course} onClick={handleGood}>
+        讚{good}
+      </button>
+
+      <button id={currentUser.user.course} onClick={handleBad}>
+        爛{bad}
+      </button>
+
       {currentUser && currentUser.user.role === "student" && (
         <button id={currentUser.user.course} onClick={enrollCourse}>
           註冊課程
