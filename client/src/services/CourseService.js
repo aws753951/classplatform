@@ -44,6 +44,16 @@ class CourseService {
   }
   // update - instructor--------
   // delete - instructor--------
+  deleteCourse(_id) {
+    if (localStorage.getItem("user")) {
+      this.token = JSON.parse(localStorage.getItem("user")).token;
+    } else {
+      this.token = "";
+    }
+    return axios.delete(API_URL + "/" + _id, {
+      headers: { Authorization: this.token },
+    });
+  }
 }
 
 export default new CourseService();

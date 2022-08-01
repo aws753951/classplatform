@@ -64,6 +64,15 @@ router.get("/post/:_id", (req, res) => {
 router.patch("/:_id", (req, res) => {});
 
 // delete - instructor
-router.delete("/:_id", (req, res) => {});
+router.delete("/:_id", (req, res) => {
+  let { _id } = req.params;
+  Course.deleteOne({ _id })
+    .then(() => {
+      res.status(200).send("刪除課程");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 
 module.exports = router;

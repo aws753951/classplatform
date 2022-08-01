@@ -48,7 +48,7 @@ const Login = ({ currentUser, setCurrentUser }) => {
         placeholder="再次輸入密碼"
         onChange={handleChangePassword2}
       />
-      <button onClick={handleLogin}>註冊</button>
+      <button onClick={handleLogin}>登入</button>
     </div>
   );
 };
