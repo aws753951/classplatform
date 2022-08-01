@@ -18,9 +18,34 @@ class CourseService {
     );
   }
   // enroll a new course - student
+  enroll(_id, user_id) {
+    if (localStorage.getItem("user")) {
+      this.token = JSON.parse(localStorage.getItem("user")).token;
+    } else {
+      this.token = "";
+    }
+    return axios.post(
+      API_URL + "/enroll/" + _id,
+      { user_id },
+      {
+        headers: { Authorization: this.token },
+      }
+    );
+  }
   // read----------------
   // get course with id
   getCourseWithID(_id) {
+    if (localStorage.getItem("user")) {
+      this.token = JSON.parse(localStorage.getItem("user")).token;
+    } else {
+      this.token = "";
+    }
+    return axios.get(API_URL + "/" + _id, {
+      headers: { Authorization: this.token },
+    });
+  }
+  // get students enrolled courses - student
+  getStudentCourses(_id) {
     if (localStorage.getItem("user")) {
       this.token = JSON.parse(localStorage.getItem("user")).token;
     } else {
@@ -30,7 +55,6 @@ class CourseService {
       headers: { Authorization: this.token },
     });
   }
-  // get students enrolled courses - student
   // get instructor posted courses - instructor
   getInstructorCourses(_id) {
     if (localStorage.getItem("user")) {

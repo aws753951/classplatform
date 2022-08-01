@@ -24,7 +24,15 @@ const App = () => {
             <Login currentUser={currentUser} setCurrentUser={setCurrentUser} />
           }
         />
-        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/profile"
+          element={
+            <Profile
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+            />
+          }
+        />
         <Route
           path="/postcourses"
           element={

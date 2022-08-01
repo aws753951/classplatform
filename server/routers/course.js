@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Course = require("../models").CourseModel;
+const User = require("../models").UserModel;
 const courseValidation = require("../validation").courseValidation;
 
 // create
@@ -29,12 +30,43 @@ router.post("/", async (req, res) => {
     });
 });
 // enroll a new course - student
-router.post("/enroll/:_id", (req, res) => {});
+router.post("/enroll/:_id", (req, res) => {
+  let { user_id } = req.body;
+  let { _id } = req.params;
+  Course.findOne({ _id }).then((item) => {
+    if (item.students.includes(user_id)) {
+      res.send("你已經註冊過這堂課囉!");
+    } else {
+      item.students.push(user_id);
+      User.findOne({ _id: user_id }).then((user) => {
+        user.enrolled.push(_id);
+        user.save();
+      });
+      item.save().then(() => {
+        res.send("已經幫你註冊好囉，現在幫你導到個人頁面");
+      });
+    }
+  });
+});
 
 // read
 
-// get students enrolled courses - student
+// get student enrolled course
 router.get("/enroll/:_id", (req, res) => {
+  let { _id } = req.params;
+  Course.find({ students: _id })
+    .populate("instructor", ["username", "email"])
+    .then((item) => {
+      res.status(200).json(item);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send(err);
+    });
+});
+
+// get courses with course id
+router.get("/:_id", (req, res) => {
   let { _id } = req.params;
   Course.findOne({ _id })
     .populate("instructor", ["username", "email"])
