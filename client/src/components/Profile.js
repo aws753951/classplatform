@@ -10,17 +10,17 @@ const Profile = ({ currentUser, setCurrentUser }) => {
     let _id;
     if (currentUser) {
       _id = currentUser.user._id;
+      if (currentUser.user.role === "student") {
+        CourseService.getStudentCourses(_id)
+          .then((item) => {
+            setCourseData(item.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     } else {
       _id = "";
-    }
-    if (currentUser.user.role === "student") {
-      CourseService.getStudentCourses(_id)
-        .then((item) => {
-          setCourseData(item.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
     }
   });
 
@@ -58,7 +58,8 @@ const Profile = ({ currentUser, setCurrentUser }) => {
           <button>依照上傳時間排列</button>
         </div>
       )}
-      {currentUser.user.role === "student" &&
+      {currentUser &&
+        currentUser.user.role === "student" &&
         courseData &&
         courseData.map((course) => (
           <div key={course._id}>

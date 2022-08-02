@@ -25,17 +25,17 @@ const Postcourse = ({ currentUser, setCurrentUser }) => {
     let _id;
     if (currentUser) {
       _id = currentUser.user._id;
+      if (currentUser.user.role === "instructor") {
+        CourseService.getInstructorCourses(_id)
+          .then((item) => {
+            setCourseData(item.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     } else {
       _id = "";
-    }
-    if (currentUser.user.role === "instructor") {
-      CourseService.getInstructorCourses(_id)
-        .then((item) => {
-          setCourseData(item.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
     }
   }, []);
 
@@ -63,10 +63,11 @@ const Postcourse = ({ currentUser, setCurrentUser }) => {
 
   return (
     <div>
-      {/* !currentUser not work, need futher check */}
       {!currentUser && <div>請先登入喔</div>}
-      {currentUser.user.role === "student" && <div>只有講師才能新增課程喔</div>}
-      {currentUser.user.role === "instructor" && (
+      {currentUser && currentUser.user.role === "student" && (
+        <div>只有講師才能新增課程喔</div>
+      )}
+      {currentUser && currentUser.user.role === "instructor" && (
         <>
           <h3>請新增課程</h3>
           {message && <div>{message}</div>}
@@ -94,8 +95,9 @@ const Postcourse = ({ currentUser, setCurrentUser }) => {
         </>
       )}
 
-      {courseData &&
+      {currentUser &&
         currentUser.user.role === "instructor" &&
+        courseData &&
         courseData.map((course) => (
           <div key={course._id}>
             <h3>課堂標題: {course.title}</h3>

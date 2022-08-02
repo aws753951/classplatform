@@ -14,7 +14,7 @@ const App = () => {
   let [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
   return (
     <div>
-      <Nav />
+      <Nav currentUser={currentUser} setCurrentUser={setCurrentUser} />
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/register" element={<Register />} />

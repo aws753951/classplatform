@@ -74,27 +74,24 @@ const Enroll = ({ currentUser, setCurrentUser }) => {
   };
 
   useEffect(() => {
-    CourseService.getCourseWithID(currentUser.user.course).then((item) => {
-      if (item.data.url.match(/v=(.*)/)[1]) {
-        setFoundUrl(item.data.url.match(/v=(.*)/)[1]);
-      }
-      setCourseData(item.data);
-    });
-    // could'nt put if and else if in useEffect,need check
-    CourseService.getCourseWithID(currentUser.user.course).then((item) => {
-      if (item.data.url.match(/youtu.be\/(.*)/)[1]) {
-        setFoundUrl(item.data.url.match(/youtu.be\/(.*)/)[1]);
-      }
-      setCourseData(item.data);
-    });
-    CourseService.getCourseWithID(currentUser.user.course).then((item) => {
-      setGood(item.data.good.length);
-      setBad(item.data.bad.length);
-    });
+    if (currentUser) {
+      CourseService.getCourseWithID(currentUser.user.course).then((item) => {
+        try {
+          setFoundUrl(item.data.url.match(/v=(.*)/)[1]);
+        } catch (e) {}
+        try {
+          setFoundUrl(item.data.url.match(/youtu.be\/(.*)/)[1]);
+        } catch (e) {}
+        setGood(item.data.good.length);
+        setBad(item.data.bad.length);
+        setCourseData(item.data);
+      });
+    }
   }, []);
 
   return (
     <div>
+      {!currentUser && <div>請先登入</div>}
       {courseData && (
         <>
           <h1>{courseData.title}</h1>
@@ -112,14 +109,16 @@ const Enroll = ({ currentUser, setCurrentUser }) => {
           allowfullscreen
         ></iframe>
       )}
-
-      <button id={currentUser.user.course} onClick={handleGood}>
-        讚{good}
-      </button>
-
-      <button id={currentUser.user.course} onClick={handleBad}>
-        爛{bad}
-      </button>
+      {currentUser && (
+        <button id={currentUser.user.course} onClick={handleGood}>
+          讚{good}
+        </button>
+      )}
+      {currentUser && (
+        <button id={currentUser.user.course} onClick={handleBad}>
+          爛{bad}
+        </button>
+      )}
 
       {currentUser && currentUser.user.role === "student" && (
         <button id={currentUser.user.course} onClick={enrollCourse}>
