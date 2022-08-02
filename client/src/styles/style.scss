@@ -17,9 +17,13 @@ body {
   font-family: "Noto Sans TC", sans-serif;
 }
 
+hr {
+  border: 1px solid black;
+}
 @import "./nav";
 @import "./home";
 @import "./register";
 @import "./footer";
 @import "./login";
 @import "./search";
+@import "./profile";

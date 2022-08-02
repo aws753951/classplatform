@@ -97,6 +97,7 @@ const Search = ({ currentUser, setCurrentUser }) => {
               <h3>課堂標題: {course.title}</h3>
               <h4>講師名稱: {course.instructor.username}</h4>
               <h4>講師信箱: {course.instructor.email}</h4>
+              <hr />
               <p>上傳時間:{course.date}</p>
               <p>註冊人數:{course.students.length}</p>
               <p>讚: {course.good.length}</p>
