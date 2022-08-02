@@ -31,15 +31,15 @@ const Postcourse = ({ currentUser, setCurrentUser }) => {
   };
 
   return (
-    <div>
+    <div className="postcourse">
       {!currentUser && <div>請先登入喔</div>}
       {currentUser && currentUser.user.role === "student" && (
         <div>只有講師才能新增課程喔</div>
       )}
       {currentUser && currentUser.user.role === "instructor" && (
-        <>
-          <h3>請新增課程</h3>
-          {message && <div>{message}</div>}
+        <div className="post">
+          <h1>請新增課程</h1>
+          {message && <div className="message">{message}</div>}
           <input
             type="text"
             placeholder="課程名稱"
@@ -60,7 +60,7 @@ const Postcourse = ({ currentUser, setCurrentUser }) => {
             onChange={handleChangeURL}
           ></textarea>
           <button onClick={handlePostCourse}>立即新增課程</button>
-        </>
+        </div>
       )}
     </div>
   );

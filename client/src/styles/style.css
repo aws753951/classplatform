@@ -794,4 +794,69 @@ nav ul .navSearch {
     width: 100px !important;
   }
 }
+
+.postcourse {
+  min-height: 92vh;
+  width: 100%;
+}
+
+.postcourse .post {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.postcourse .post h1 {
+  margin: 2rem;
+}
+
+.postcourse .post .message {
+  color: red;
+  font-size: 1.25rem;
+}
+
+.postcourse .post input {
+  margin: 0.5rem;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  width: 400px;
+}
+
+.postcourse .post textarea {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  font-size: 1.2rem;
+  width: 400px;
+}
+
+.postcourse .post button {
+  font-size: 1.5rem;
+  padding: 0.3rem;
+  width: 400px;
+  background-color: #f7b990;
+  border: none;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 550px) {
+  .postcourse .post input {
+    width: 85vw !important;
+  }
+  .postcourse .post textarea {
+    width: 85vw !important;
+  }
+  .postcourse .post button {
+    width: 85vw !important;
+  }
+}
 /*# sourceMappingURL=style.css.map */

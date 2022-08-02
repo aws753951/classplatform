@@ -1,0 +1,53 @@
+.postcourse {
+  min-height: 92vh;
+  width: 100%;
+  .post {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h1 {
+      margin: 2rem;
+    }
+    .message {
+      color: red;
+      font-size: 1.25rem;
+    }
+    input {
+      margin: 0.5rem;
+      font-size: 1.5rem;
+      padding: 0.5rem;
+      width: 400px;
+    }
+    textarea {
+      padding: 0.5rem;
+      margin: 0.5rem;
+      font-size: 1.2rem;
+      width: 400px;
+    }
+    button {
+      font-size: 1.5rem;
+      padding: 0.3rem;
+      width: 400px;
+      background-color: rgb(247, 185, 144);
+      border: none;
+      border-radius: 5px;
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .postcourse {
+    .post {
+      input {
+        width: 85vw !important;
+      }
+      textarea {
+        width: 85vw !important;
+      }
+      button {
+        width: 85vw !important;
+      }
+    }
+  }
+}
