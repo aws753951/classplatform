@@ -1,0 +1,33 @@
+nav {
+  background-color: rgb(247, 185, 144);
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    li {
+      display: flex;
+      a {
+        font-size: 1.25rem;
+        padding: 0.5rem 1rem;
+        transition: all 0.5s ease;
+        &:hover {
+          background-color: rgb(245, 167, 115);
+        }
+      }
+    }
+    .navSearch {
+      margin-right: 3rem;
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  ul {
+    flex-direction: column;
+    align-items: flex-start !important;
+    .navSearch {
+      margin-right: 0rem !important;
+    }
+  }
+}

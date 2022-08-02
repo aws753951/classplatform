@@ -9,6 +9,7 @@ import Postcourse from "./components/Postcourse";
 import Enroll from "./components/Enroll";
 import Search from "./components/Search";
 import AuthService from "./services/AuthService";
+import "./styles/style.css";
 
 const App = () => {
   let [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());

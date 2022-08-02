@@ -42,7 +42,7 @@ const Nav = ({ currentUser, setCurrentUser }) => {
               <Link to="/postcourses">新增課程</Link>
             </li>
           )}
-          <li>
+          <li className="navSearch">
             <Link to="/search">搜尋課程</Link>
           </li>
         </ul>

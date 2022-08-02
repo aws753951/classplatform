@@ -1,0 +1,114 @@
+.home {
+  margin: 1.5rem 6rem;
+  padding: 1rem;
+  background-color: rgb(206, 139, 94);
+  border-radius: 20px;
+  min-height: 50vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  .title {
+    flex: 0 1 600px;
+    padding: 2rem;
+    margin: 1rem;
+    font-size: 1.5rem;
+  }
+  .bonus {
+    flex: 0 1 170px;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    button {
+      border: none;
+      border-radius: 5px;
+      background-color: rgb(143, 76, 0);
+      a {
+        font-size: 2rem;
+        padding: 1rem;
+        color: rgb(250, 250, 250);
+      }
+    }
+  }
+}
+.section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0rem 6rem;
+
+  .leftsection {
+    min-height: 35vh;
+    margin-right: 1rem;
+    padding: 1rem;
+    flex: 1 1 400px;
+    background-color: rgb(112, 60, 27);
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-weight: lighter;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.2rem;
+    button {
+      padding: 0.5rem;
+      font-size: 2rem;
+      border: 2px solid black;
+      border-radius: 5px;
+      background-color: rgb(112, 60, 27);
+      a {
+        color: white;
+      }
+    }
+  }
+  .rightsection {
+    min-height: 35vh;
+    margin-left: 1rem;
+    padding: 1rem;
+    flex: 1 1 400px;
+    background-color: rgb(236, 196, 170);
+    border: none;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.2rem;
+    button {
+      padding: 0.5rem;
+      font-size: 2rem;
+      border: none;
+      border-radius: 5px;
+    }
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .home {
+    margin: 1rem 2rem;
+    padding: 0rem !important;
+    .title {
+      padding: 0rem !important;
+    }
+    .bonus {
+      button {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+  .section {
+    margin: 1rem 2rem;
+    .leftsection {
+      margin-right: 0rem !important;
+      flex: 1 1 600px !important;
+      margin-bottom: 1rem;
+      padding: 1rem !important;
+    }
+    .rightsection {
+      margin-left: 0rem !important;
+      flex: 1 1 600px !important;
+      padding: 1rem !important;
+    }
+  }
+}
