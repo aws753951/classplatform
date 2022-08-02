@@ -88,6 +88,7 @@ router.post("/rating/:_id", (req, res) => {
 router.get("/enroll/:_id", (req, res) => {
   let { _id } = req.params;
   Course.find({ students: _id })
+    .sort({ date: -1 })
     .populate("instructor", ["username", "email"])
     .then((item) => {
       res.status(200).json(item);
@@ -115,6 +116,7 @@ router.get("/:_id", (req, res) => {
 router.get("/post/:_id", (req, res) => {
   let { _id } = req.params;
   Course.find({ instructor: _id })
+    .sort({ date: -1 })
     .populate("instructor", ["username", "email"])
     .then((item) => {
       res.status(200).json(item);

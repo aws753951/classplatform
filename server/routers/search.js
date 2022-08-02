@@ -4,6 +4,7 @@ const Course = require("../models").CourseModel;
 // get all courses
 router.get("/", (req, res) => {
   Course.find({})
+    .sort({ date: -1 })
     .populate("instructor", ["username", "email"])
     .then((item) => {
       res.status(200).json(item);

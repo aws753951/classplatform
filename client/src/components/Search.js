@@ -49,6 +49,13 @@ const Search = ({ currentUser, setCurrentUser }) => {
     }
   };
 
+  const sortGood = () => {
+    let temp = [].concat(courseData);
+    setCourseData(
+      temp.sort((a, b) => (a.good.length > b.good.length ? -1 : 1))
+    );
+  };
+
   useEffect(() => {
     SearchService.getCourses()
       .then((item) => {
@@ -68,7 +75,7 @@ const Search = ({ currentUser, setCurrentUser }) => {
         onChange={handleChangeName}
       />
       <button onClick={handleSearch}>搜尋</button>
-      <button>依照點讚數高至低搜尋</button>
+      <button onClick={sortGood}>依照點讚數高至低搜尋</button>
       {courseData &&
         courseData.map((course) => (
           <div key={course._id}>
