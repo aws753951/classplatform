@@ -35,16 +35,20 @@ router.post("/enroll/:_id", (req, res) => {
   let { _id } = req.params;
   Course.findOne({ _id }).then((item) => {
     if (item.students.includes(user_id)) {
-      res.send("你已經註冊過這堂課囉!");
+      res.send("你已經註冊過這堂課囉!，現在幫你導向個人頁面");
     } else {
       item.students.push(user_id);
-      User.findOne({ _id: user_id }).then((user) => {
-        user.enrolled.push(_id);
-        user.save();
-      });
-      item.save().then(() => {
-        res.send("已經幫你註冊好囉，現在幫你導到個人頁面");
-      });
+      item.save();
+      User.findOne({ _id: user_id })
+        .then((user) => {
+          user.enrolled.push(_id);
+          user.save().then(() => {
+            res.send("幫你註冊好課程囉，現在幫你導向個人頁面");
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   });
 });
@@ -127,8 +131,29 @@ router.get("/post/:_id", (req, res) => {
     });
 });
 
-// update - instructor
-router.patch("/:_id", (req, res) => {});
+// update
+// router.patch("/:_id", (req, res) => {
+//   let { _id } = req.params;
+//   let { user_id } = req.body;
+//   User.findOne({ _id: user_id })
+//     .then((user) => {
+//       if (user.enrolled.includes(_id)) {
+//         user.enrolled.splice(user.enrolled.indexOf(_id), 1);
+//         user.save();
+//         Course.findOne({ _id }).then((course) => {
+//           if (course.students.includes(user_id)) {
+//             course.students.splice(course.students.indexOf(user_id), 1);
+//             course.save();
+//           }
+//         });
+//         res.status(200).send(user);
+//       }
+//       res.status(200).send("已取消註冊課程");
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// });
 
 // delete - instructor
 router.delete("/:_id", (req, res) => {

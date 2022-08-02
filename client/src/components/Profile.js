@@ -6,6 +6,31 @@ const Profile = ({ currentUser, setCurrentUser }) => {
   const navigate = useNavigate();
   let [courseData, setCourseData] = useState([]);
 
+  const handleContent = (e) => {
+    if (!currentUser) {
+      window.alert("你還沒登入喔，請登入後再查看課程內容");
+      navigate("/login");
+    } else {
+      currentUser.user["course"] = e.target.id;
+      setCurrentUser(currentUser);
+      navigate("/enroll");
+    }
+  };
+
+  const sortGood = () => {
+    let temp = [].concat(courseData);
+    setCourseData(
+      temp.sort((a, b) => (a.good.length > b.good.length ? -1 : 1))
+    );
+  };
+
+  const sortRegister = () => {
+    let temp = [].concat(courseData);
+    setCourseData(
+      temp.sort((a, b) => (a.students.length > b.students.length ? -1 : 1))
+    );
+  };
+
   useEffect(() => {
     let _id;
     if (currentUser) {
@@ -18,22 +43,19 @@ const Profile = ({ currentUser, setCurrentUser }) => {
           .catch((err) => {
             console.log(err);
           });
+      } else if (currentUser.user.role === "instructor") {
+        CourseService.getInstructorCourses(_id)
+          .then((item) => {
+            setCourseData(item.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }
     } else {
       _id = "";
     }
-  });
-
-  const handleContent = (e) => {
-    if (!currentUser) {
-      window.alert("你還沒登入喔，請登入後再查看課程內容");
-      navigate("/login");
-    } else {
-      currentUser.user["course"] = e.target.id;
-      setCurrentUser(currentUser);
-      navigate("/enroll");
-    }
-  };
+  }, []);
 
   return (
     <div>
@@ -55,15 +77,29 @@ const Profile = ({ currentUser, setCurrentUser }) => {
           <p>你的username是: {currentUser.user.username}</p>
           <p>你註冊的Email是:{currentUser.user.email}</p>
           <p>上次登入的時間為:{currentUser.user.lastLogin}</p>
-          <button>依照上傳時間排列</button>
+        </div>
+      )}
+
+      {currentUser && currentUser.user.role === "instructor" && (
+        <div>已創建的課程</div>
+      )}
+      {currentUser && currentUser.user.role === "student" && (
+        <div>已註冊的課程</div>
+      )}
+
+      {currentUser && courseData && (
+        <div>
+          <button onClick={sortGood}>點讚數排列</button>
+          <button onClick={sortRegister}>熱門度排列</button>
         </div>
       )}
       {currentUser &&
-        currentUser.user.role === "student" &&
         courseData &&
         courseData.map((course) => (
           <div key={course._id}>
             <h3>課堂標題: {course.title}</h3>
+            <h4>講師名稱: {course.instructor.username}</h4>
+            <h4>講師信箱: {course.instructor.email}</h4>
             <p>上傳時間:{course.date}</p>
             <p>註冊人數:{course.students.length}</p>
             <p>讚: {course.good.length}</p>

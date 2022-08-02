@@ -55,6 +55,12 @@ const Search = ({ currentUser, setCurrentUser }) => {
       temp.sort((a, b) => (a.good.length > b.good.length ? -1 : 1))
     );
   };
+  const sortRegister = () => {
+    let temp = [].concat(courseData);
+    setCourseData(
+      temp.sort((a, b) => (a.students.length > b.students.length ? -1 : 1))
+    );
+  };
 
   useEffect(() => {
     SearchService.getCourses()
@@ -75,11 +81,14 @@ const Search = ({ currentUser, setCurrentUser }) => {
         onChange={handleChangeName}
       />
       <button onClick={handleSearch}>搜尋</button>
-      <button onClick={sortGood}>依照點讚數高至低搜尋</button>
+      <button onClick={sortGood}>點讚數排列</button>
+      <button onClick={sortRegister}>熱門度排列</button>
       {courseData &&
         courseData.map((course) => (
           <div key={course._id}>
             <h3>課堂標題: {course.title}</h3>
+            <h4>講師名稱: {course.instructor.username}</h4>
+            <h4>講師信箱: {course.instructor.email}</h4>
             <p>上傳時間:{course.date}</p>
             <p>註冊人數:{course.students.length}</p>
             <p>讚: {course.good.length}</p>

@@ -17,6 +17,7 @@ const Homepage = () => {
       <button>
         <a href="/search">課程搜尋</a>
       </button>
+
       <h1>成為學生</h1>
       <p>
         你可以享受課程帶給你的知識

@@ -12,8 +12,8 @@ const Enroll = ({ currentUser, setCurrentUser }) => {
   const enrollCourse = (e) => {
     if (currentUser.user.role === "student") {
       CourseService.enroll(e.target.id, currentUser.user._id)
-        .then((item) => {
-          window.alert(item.data);
+        .then((res) => {
+          window.alert(res.data);
           navigate("/profile");
         })
         .catch((err) => {
