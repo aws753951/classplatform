@@ -22,9 +22,9 @@ const loginValidation = (object) => {
 
 const courseValidation = (object) => {
   const schema = Joi.object({
-    title: Joi.string().min(6).max(50).required(),
+    title: Joi.string().min(3).max(50).required(),
     description: Joi.string().min(6).max(500).required(),
-    url: Joi.string().min(25).max(48).required(),
+    url: Joi.string().min(25).max(60).required(),
   });
   return schema.validate(object);
 };

@@ -6,10 +6,14 @@ let CourseSchema = new mongoose.Schema({
   },
   title: {
     type: String,
+    minLength: 3,
+    maxLength: 50,
     required: true,
   },
   description: {
     type: String,
+    minLength: 6,
+    maxLength: 500,
     required: true,
   },
   instructor: {
@@ -24,6 +28,8 @@ let CourseSchema = new mongoose.Schema({
   },
   url: {
     type: String,
+    minLength: 25,
+    maxLength: 60,
     required: true,
   },
   date: {

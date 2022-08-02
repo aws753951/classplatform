@@ -95,7 +95,7 @@ const Enroll = ({ currentUser, setCurrentUser }) => {
       {courseData && (
         <div className="content">
           <h1>課程標題: {courseData.title}</h1>
-          <p>課程描述{courseData.description}</p>
+          <p>課程描述: {courseData.description}</p>
         </div>
       )}
       {foundUrl && (
