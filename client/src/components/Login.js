@@ -42,7 +42,7 @@ const Login = ({ currentUser, setCurrentUser }) => {
             <p>或使用MC帳號登入</p>{" "}
           </div>
 
-          {message && <div>{message}</div>}
+          {message && <div className="message">{message}</div>}
           <div className="input">
             <input
               type="email"

@@ -498,4 +498,129 @@ nav ul .navSearch {
     font-size: 1rem !important;
   }
 }
+
+.search {
+  min-height: 93vh;
+  width: 100%;
+}
+
+.search .topsection {
+  min-height: 15vh;
+}
+
+.search .topsection h3 {
+  padding: 1rem;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.search .topsection .input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.search .topsection .input input {
+  margin: 0rem 0.1rem;
+  font-size: 1.5rem;
+  min-height: 45px;
+  padding: 0.25rem;
+  border-radius: 5px;
+  border: 2px solid #f7b990;
+  width: 500px;
+}
+
+.search .topsection .input button {
+  font-size: 1.5rem;
+  min-height: 45px;
+  padding: 0.25rem;
+  border-radius: 5px;
+  background-color: #fc8d43;
+  border: 2px solid #f7b990;
+  color: white;
+  width: 150px;
+}
+
+.search .topsection .button {
+  margin: 1rem;
+  text-align: center;
+}
+
+.search .topsection .button button {
+  font-size: 1.25rem;
+  padding: 0.7rem;
+  margin: 0.1rem;
+  border-radius: 5px;
+  border: 2px solid #f7b990;
+  color: black;
+}
+
+.search .bottomsection {
+  margin: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.search .bottomsection .card {
+  width: 350px;
+  margin: 1rem;
+  padding: 1rem;
+  background-color: #f7b990;
+  border-radius: 10px;
+}
+
+.search .bottomsection .card .button {
+  text-align: end;
+}
+
+.search .bottomsection .card .button button {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  background-color: #f38c47;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 200px;
+}
+
+@media screen and (max-width: 1177px) {
+  .bottomsection .card .button button {
+    width: 200px !important;
+  }
+}
+
+@media screen and (max-width: 795px) {
+  .topsection .input input {
+    width: 300px !important;
+  }
+  .topsection .input button {
+    width: 100px !important;
+  }
+  .topsection .button button {
+    width: 150px !important;
+  }
+}
+
+@media screen and (max-width: 408px) {
+  .topsection .input input {
+    margin: 1rem !important;
+  }
+}
 /*# sourceMappingURL=style.css.map */
