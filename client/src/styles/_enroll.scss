@@ -1,0 +1,58 @@
+.enroll {
+  min-height: 93vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  .content {
+    margin: 1rem;
+    text-align: center;
+    background-color: rgb(247, 169, 117);
+    border-radius: 10px;
+    width: 700px;
+    padding: 1rem;
+  }
+  iframe {
+    border-radius: 10px;
+  }
+  .button {
+    text-align: center;
+    button {
+      font-size: 1.25rem;
+      padding: 0.2rem;
+      margin: 0.2rem;
+      border: 2px solid rgb(247, 185, 144);
+      border-radius: 5px;
+    }
+  }
+  .action {
+    button {
+      font-size: 2rem;
+      padding: 1rem;
+      margin: 0.2rem;
+      background-color: rgb(243, 140, 71);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      width: 200px;
+    }
+  }
+}
+
+@media screen and (max-width: 830px) {
+  .enroll {
+    .content {
+      width: 90vw !important;
+    }
+    iframe {
+      width: 90vw !important;
+      height: 90vw !important;
+    }
+    .button {
+      button {
+        width: 100px !important;
+      }
+    }
+  }
+}

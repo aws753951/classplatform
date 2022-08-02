@@ -90,18 +90,18 @@ const Enroll = ({ currentUser, setCurrentUser }) => {
   }, []);
 
   return (
-    <div>
+    <div className="enroll">
       {!currentUser && <div>請先登入</div>}
       {courseData && (
-        <>
-          <h1>{courseData.title}</h1>
-          <p>{courseData.description}</p>
-        </>
+        <div className="content">
+          <h1>課程標題: {courseData.title}</h1>
+          <p>課程描述{courseData.description}</p>
+        </div>
       )}
       {foundUrl && (
         <iframe
-          width="560"
-          height="315"
+          width="800"
+          height="600"
           src={`https://www.youtube.com/embed/${foundUrl}`}
           title="YouTube video player"
           frameborder="0"
@@ -109,27 +109,30 @@ const Enroll = ({ currentUser, setCurrentUser }) => {
           allowfullscreen
         ></iframe>
       )}
-      {currentUser && (
-        <button id={currentUser.user.course} onClick={handleGood}>
-          讚{good}
-        </button>
-      )}
-      {currentUser && (
-        <button id={currentUser.user.course} onClick={handleBad}>
-          爛{bad}
-        </button>
-      )}
-
-      {currentUser && currentUser.user.role === "student" && (
-        <button id={currentUser.user.course} onClick={enrollCourse}>
-          註冊課程
-        </button>
-      )}
-      {currentUser && currentUser.user.role === "instructor" && (
-        <button id={currentUser.user.course} onClick={deleteCourse}>
-          刪除課程
-        </button>
-      )}
+      <div className="button">
+        {currentUser && (
+          <button id={currentUser.user.course} onClick={handleGood}>
+            給個讚{good}
+          </button>
+        )}
+        {currentUser && (
+          <button id={currentUser.user.course} onClick={handleBad}>
+            給個爛{bad}
+          </button>
+        )}
+      </div>
+      <div className="action">
+        {currentUser && currentUser.user.role === "student" && (
+          <button id={currentUser.user.course} onClick={enrollCourse}>
+            註冊課程
+          </button>
+        )}
+        {currentUser && currentUser.user.role === "instructor" && (
+          <button id={currentUser.user.course} onClick={deleteCourse}>
+            刪除課程
+          </button>
+        )}
+      </div>
     </div>
   );
 };

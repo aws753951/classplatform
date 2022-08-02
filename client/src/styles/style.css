@@ -158,6 +158,8 @@ nav ul .navSearch {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -ms-flex-pack: distribute;
       justify-content: space-around;
   -webkit-box-align: center;
@@ -191,6 +193,8 @@ nav ul .navSearch {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -ms-flex-pack: distribute;
       justify-content: space-around;
   -webkit-box-align: center;
@@ -208,7 +212,7 @@ nav ul .navSearch {
 
 @media screen and (max-width: 1150px) {
   .home {
-    margin: 1rem 2rem;
+    margin: 1rem 2rem !important;
     padding: 0rem !important;
   }
   .home .title {
@@ -216,17 +220,22 @@ nav ul .navSearch {
   }
   .home .bonus button {
     margin-bottom: 1rem;
+    width: 200px !important;
   }
   .section {
-    margin: 1rem 2rem;
+    margin: 1rem 2rem !important;
   }
   .section .leftsection {
     margin-right: 0rem !important;
     -webkit-box-flex: 1 !important;
         -ms-flex: 1 1 600px !important;
             flex: 1 1 600px !important;
-    margin-bottom: 1rem;
+    margin-bottom: 1rem !important;
     padding: 1rem !important;
+  }
+  .section .leftsection button {
+    margin-bottom: 1rem;
+    width: 200px !important;
   }
   .section .rightsection {
     margin-left: 0rem !important;
@@ -234,6 +243,10 @@ nav ul .navSearch {
         -ms-flex: 1 1 600px !important;
             flex: 1 1 600px !important;
     padding: 1rem !important;
+  }
+  .section .rightsection button {
+    margin-bottom: 1rem;
+    width: 200px !important;
   }
 }
 
@@ -604,27 +617,24 @@ nav ul .navSearch {
   width: 200px;
 }
 
-@media screen and (max-width: 1177px) {
-  .bottomsection .card .button button {
-    width: 200px !important;
-  }
-}
-
 @media screen and (max-width: 795px) {
   .topsection .input input {
-    width: 300px !important;
+    width: 85vw !important;
   }
   .topsection .input button {
-    width: 100px !important;
+    width: 50vw !important;
   }
   .topsection .button button {
-    width: 150px !important;
+    width: 70vw !important;
   }
 }
 
 @media screen and (max-width: 408px) {
   .topsection .input input {
     margin: 1rem !important;
+  }
+  .bottomsection .card .button button {
+    width: 40vw !important;
   }
 }
 
@@ -715,6 +725,73 @@ nav ul .navSearch {
   }
   .bottomsection .card {
     width: 80vw !important;
+  }
+}
+
+.enroll {
+  min-height: 93vh;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.enroll .content {
+  margin: 1rem;
+  text-align: center;
+  background-color: #f7a975;
+  border-radius: 10px;
+  width: 700px;
+  padding: 1rem;
+}
+
+.enroll iframe {
+  border-radius: 10px;
+}
+
+.enroll .button {
+  text-align: center;
+}
+
+.enroll .button button {
+  font-size: 1.25rem;
+  padding: 0.2rem;
+  margin: 0.2rem;
+  border: 2px solid #f7b990;
+  border-radius: 5px;
+}
+
+.enroll .action button {
+  font-size: 2rem;
+  padding: 1rem;
+  margin: 0.2rem;
+  background-color: #f38c47;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 200px;
+}
+
+@media screen and (max-width: 830px) {
+  .enroll .content {
+    width: 90vw !important;
+  }
+  .enroll iframe {
+    width: 90vw !important;
+    height: 90vw !important;
+  }
+  .enroll .button button {
+    width: 100px !important;
   }
 }
 /*# sourceMappingURL=style.css.map */

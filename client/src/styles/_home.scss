@@ -49,6 +49,7 @@
     color: white;
     font-weight: lighter;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
     font-size: 1.2rem;
@@ -72,6 +73,7 @@
     border: none;
     border-radius: 20px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
     font-size: 1.2rem;
@@ -86,7 +88,7 @@
 
 @media screen and (max-width: 1150px) {
   .home {
-    margin: 1rem 2rem;
+    margin: 1rem 2rem !important;
     padding: 0rem !important;
     .title {
       padding: 0rem !important;
@@ -94,21 +96,31 @@
     .bonus {
       button {
         margin-bottom: 1rem;
+        width: 200px !important;
       }
     }
   }
   .section {
-    margin: 1rem 2rem;
+    margin: 1rem 2rem !important;
+
     .leftsection {
       margin-right: 0rem !important;
       flex: 1 1 600px !important;
-      margin-bottom: 1rem;
+      margin-bottom: 1rem !important;
       padding: 1rem !important;
+      button {
+        margin-bottom: 1rem;
+        width: 200px !important;
+      }
     }
     .rightsection {
       margin-left: 0rem !important;
       flex: 1 1 600px !important;
       padding: 1rem !important;
+      button {
+        margin-bottom: 1rem;
+        width: 200px !important;
+      }
     }
   }
 }

@@ -75,31 +75,19 @@
   }
 }
 
-@media screen and (max-width: 1177px) {
-  .bottomsection {
-    .card {
-      .button {
-        button {
-          width: 200px !important;
-        }
-      }
-    }
-  }
-}
-
 @media screen and (max-width: 795px) {
   .topsection {
     .input {
       input {
-        width: 300px !important;
+        width: 85vw !important;
       }
       button {
-        width: 100px !important;
+        width: 50vw !important;
       }
     }
     .button {
       button {
-        width: 150px !important;
+        width: 70vw !important;
       }
     }
   }
@@ -110,6 +98,15 @@
     .input {
       input {
         margin: 1rem !important;
+      }
+    }
+  }
+  .bottomsection {
+    .card {
+      .button {
+        button {
+          width: 40vw !important;
+        }
       }
     }
   }
