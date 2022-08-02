@@ -1,0 +1,86 @@
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  //   background-color: rgb(148, 224, 161);
+  min-height: 92vh;
+  .leftsection {
+    flex: 1 1 300px;
+    min-height: 93vh;
+    background-image: url("../../public/loginPicture.jpg");
+    background-size: cover;
+  }
+  .rightsection {
+    min-height: 93vh;
+    flex: 1 1 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .content {
+      font-size: 1.25rem;
+      text-align: center;
+      margin: 1rem;
+      h1,
+      h3 {
+        margin: 0.5rem;
+        a {
+          color: orange;
+          font-weight: lighter;
+        }
+      }
+    }
+    .message {
+      font-size: 1.3rem;
+      color: red;
+    }
+    .input {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      input {
+        margin: 0.5rem;
+        padding: 0.3rem;
+        width: 400px;
+        font-size: 1.5rem;
+      }
+    }
+    .select {
+      select {
+        margin: 0.5rem;
+        padding: 0.3rem;
+        width: 400px;
+        font-size: 1.5rem;
+      }
+    }
+    button {
+      margin: 0.5rem;
+      padding: 0.3rem;
+      width: 400px;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .leftsection {
+    min-height: 0rem !important;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  input {
+    width: 80vw !important;
+    font-size: 1rem !important;
+  }
+  select {
+    width: 80vw !important;
+    font-size: 1rem !important;
+  }
+  button {
+    width: 80vw !important;
+    font-size: 1rem !important;
+  }
+}

@@ -73,7 +73,7 @@ nav ul .navSearch {
 }
 
 .home {
-  margin: 1.5rem 6rem;
+  margin: 1rem 6rem;
   padding: 1rem;
   background-color: #ce8b5e;
   border-radius: 20px;
@@ -136,7 +136,7 @@ nav ul .navSearch {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 0rem 6rem;
+  margin: 1.5rem 6rem;
 }
 
 .section .leftsection {
@@ -230,6 +230,272 @@ nav ul .navSearch {
         -ms-flex: 1 1 600px !important;
             flex: 1 1 600px !important;
     padding: 1rem !important;
+  }
+}
+
+.register {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  min-height: 92vh;
+}
+
+.register .leftsection {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 300px;
+          flex: 1 1 300px;
+  min-height: 93vh;
+  background-image: url("../../public/registerPicture.jpg");
+  background-size: cover;
+}
+
+.register .rightsection {
+  min-height: 93vh;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 700px;
+          flex: 1 1 700px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.register .rightsection .content {
+  font-size: 1.25rem;
+  text-align: center;
+  margin: 1rem;
+}
+
+.register .rightsection .content h1,
+.register .rightsection .content h3 {
+  margin: 0.5rem;
+}
+
+.register .rightsection .content h1 a,
+.register .rightsection .content h3 a {
+  color: orange;
+  font-weight: lighter;
+}
+
+.register .rightsection .message {
+  font-size: 1.3rem;
+  color: red;
+}
+
+.register .rightsection .input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.register .rightsection .input input {
+  margin: 0.5rem;
+  padding: 0.3rem;
+  width: 400px;
+  font-size: 1.5rem;
+}
+
+.register .rightsection .select select {
+  margin: 0.5rem;
+  padding: 0.3rem;
+  width: 400px;
+  font-size: 1.5rem;
+}
+
+.register .rightsection button {
+  margin: 0.5rem;
+  padding: 0.3rem;
+  width: 400px;
+  font-size: 1.5rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .leftsection {
+    min-height: 0rem !important;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  input {
+    width: 80vw !important;
+    font-size: 1rem !important;
+  }
+  select {
+    width: 80vw !important;
+    font-size: 1rem !important;
+  }
+  button {
+    width: 80vw !important;
+    font-size: 1rem !important;
+  }
+}
+
+.footer .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: gray;
+  padding: 0.2rem;
+}
+
+.footer .container a {
+  font-size: 1.25rem;
+}
+
+.login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  min-height: 92vh;
+}
+
+.login .leftsection {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 300px;
+          flex: 1 1 300px;
+  min-height: 93vh;
+  background-image: url("../../public/loginPicture.jpg");
+  background-size: cover;
+}
+
+.login .rightsection {
+  min-height: 93vh;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 700px;
+          flex: 1 1 700px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login .rightsection .content {
+  font-size: 1.25rem;
+  text-align: center;
+  margin: 1rem;
+}
+
+.login .rightsection .content h1,
+.login .rightsection .content h3 {
+  margin: 0.5rem;
+}
+
+.login .rightsection .content h1 a,
+.login .rightsection .content h3 a {
+  color: orange;
+  font-weight: lighter;
+}
+
+.login .rightsection .message {
+  font-size: 1.3rem;
+  color: red;
+}
+
+.login .rightsection .input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login .rightsection .input input {
+  margin: 0.5rem;
+  padding: 0.3rem;
+  width: 400px;
+  font-size: 1.5rem;
+}
+
+.login .rightsection .select select {
+  margin: 0.5rem;
+  padding: 0.3rem;
+  width: 400px;
+  font-size: 1.5rem;
+}
+
+.login .rightsection button {
+  margin: 0.5rem;
+  padding: 0.3rem;
+  width: 400px;
+  font-size: 1.5rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .leftsection {
+    min-height: 0rem !important;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  input {
+    width: 80vw !important;
+    font-size: 1rem !important;
+  }
+  select {
+    width: 80vw !important;
+    font-size: 1rem !important;
+  }
+  button {
+    width: 80vw !important;
+    font-size: 1rem !important;
   }
 }
 /*# sourceMappingURL=style.css.map */

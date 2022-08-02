@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Nav from "./components/Nav";
+import Footer from "./components/Footer";
 import Homepage from "./components/Homepage";
 import Register from "./components/Register";
 import Login from "./components/Login";
@@ -56,6 +57,7 @@ const App = () => {
           }
         />
       </Routes>
+      <Footer />
     </div>
   );
 };

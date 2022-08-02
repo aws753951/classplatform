@@ -9,7 +9,7 @@ const Nav = ({ currentUser, setCurrentUser }) => {
     setCurrentUser(AuthService.getCurrentUser());
   };
   return (
-    <div>
+    <div style={{ minHeight: "4vh" }}>
       <nav>
         <ul>
           <li>

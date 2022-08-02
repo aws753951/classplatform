@@ -38,35 +38,56 @@ const Register = () => {
       });
   };
   return (
-    <div>
-      <h1>還在等甚麼?趕緊來註冊</h1>
-      <h3>
-        若已註冊，<a href="/login">請登入</a>
-      </h3>
-      <p>或使用MC帳號註冊</p>
-      {message && <div>{message}</div>}
-      <input
-        type="text"
-        placeholder="帳號(請輸入至少三碼)"
-        onChange={handleChangeUsername}
-      />
-      <input type="email" placeholder="信箱" onChange={handleChangeEmail} />
-      <input
-        type="password"
-        placeholder="密碼(請輸入至少六碼)"
-        onChange={handleChangePassword}
-      />
-      <input
-        type="password"
-        placeholder="再次輸入密碼"
-        onChange={handleChangePassword2}
-      />
-      <select onChange={handleChangeRole}>
-        <option value="">請選擇老師或學生身分</option>
-        <option value="instructor">老師</option>
-        <option value="student">學生</option>
-      </select>
-      <button onClick={handleRegister}>註冊</button>
+    <div style={{ minHeight: "92vh" }}>
+      <div className="register">
+        <div className="leftsection"></div>
+        <div className="rightsection">
+          <div className="content">
+            <h1>還在等甚麼?趕緊來註冊</h1>
+            <h3>
+              若已註冊，<a href="/login">請登入</a>
+            </h3>
+            <p>或使用MC帳號註冊</p>
+          </div>
+
+          {message && <div className="message">{message}</div>}
+          <div className="input">
+            <input
+              type="text"
+              placeholder="請輸入姓名或暱稱(至少三碼)"
+              onChange={handleChangeUsername}
+            />
+
+            <input
+              type="email"
+              placeholder="信箱"
+              onChange={handleChangeEmail}
+            />
+
+            <input
+              type="password"
+              placeholder="密碼(請輸入至少六碼)"
+              onChange={handleChangePassword}
+            />
+
+            <input
+              type="password"
+              placeholder="再次輸入密碼"
+              onChange={handleChangePassword2}
+            />
+          </div>
+
+          <div className="select">
+            <select onChange={handleChangeRole}>
+              <option value="">請選擇老師或學生身分</option>
+              <option value="instructor">老師</option>
+              <option value="student">學生</option>
+            </select>
+          </div>
+
+          <button onClick={handleRegister}>註冊</button>
+        </div>
+      </div>
     </div>
   );
 };
