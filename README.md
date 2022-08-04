@@ -8,7 +8,7 @@
 ## node.js: 處理請求以及撈取資料庫提供相關資料
 ### 使用到的技術及架構
 1. mongoose atlas 資料庫
-1. Joi: 先行檢驗使用者輸入內容有無符合規範，並於不符合規範的輸入返回警告值
+2. Joi: 先行檢驗使用者輸入內容有無符合規範，並於不符合規範的輸入返回警告值
 ```
 validation.js
 
@@ -18,7 +18,7 @@ validation.js
     url: Joi.string().min(25).max(60).required(),
   });
 ```
-1. Jwt: 製作token，經檢驗驗證資格，若符合則於每次的req附加使用者資訊作為後續與伺服器應用
+3. Jwt: 製作token，經檢驗驗證資格，若符合則於每次的req附加使用者資訊作為後續與伺服器應用
 ```
 passport.js
 
@@ -40,7 +40,7 @@ passport.js
     })
   );
 ```
-1. Passport: 保護部分Router免於未經授權的使用者變更
+4. Passport: 保護部分Router免於未經授權的使用者變更
 ```
 index.js
  app.use(
@@ -49,7 +49,7 @@ index.js
   CourseRoute
 );
 ```
-1. bcrypt進行帳戶密碼加密
+5. bcrypt進行帳戶密碼加密
 
 ## react: 前端網頁製作
 ### 使用到的技術及架構
@@ -88,7 +88,7 @@ Login.js
           }
         />
 ```
-1. useEffect: 於狀態變更時同步顯現於頁面上(本身js讀取順序，修改state不會立即顯現)
+2. useEffect: 於狀態變更時同步顯現於頁面上(本身js讀取順序，修改state不會立即顯現)
 ```
 Enroll.js
  
@@ -108,11 +108,11 @@ Enroll.js
     }
   }, []);
 ```
-1.[].concat(state) + array.sort(): 參考使用react排序state作法，解決本專案按讚數及註冊人數的排序
+3. [].concat(state) + array.sort(): 參考使用react排序state作法，解決本專案按讚數及註冊人數的排序
 https://stackoverflow.com/questions/43572436/sort-an-array-of-objects-in-react-and-render-them
 
-    ```
-    Search.js
+```
+Search.js
  
     const sortGood = () => {
     let temp = [].concat(courseData);
@@ -121,6 +121,7 @@ https://stackoverflow.com/questions/43572436/sort-an-array-of-objects-in-react-a
     );
   };
 ```
+
  *原先使用自定義函數進行排序，不知為何於react中無法順利進行，待考證* 
 
-1. scss使用RWD: flex-item + media screen
+4. scss使用RWD: flex-item + media screen
